@@ -1,0 +1,45 @@
+  <% if (totalTodos > 0) { %>
+        <%# SHOW TODO LIST %>
+        <% todos.forEach(todo => { %>
+        <p class="mb-1 <%= todo.completed ? "text-decoration-line-through" : "" %>">
+          <a href="/getTodo/<%= todo._id %>" class="text-decoration-none text-dark"><%= todo.title %></a>
+        </p>
+        <% }) %>
+
+_________________________________
+Custom error handling in express
+_________________________________
+app.post("/register", (req, res) => {
+  const { username, email, password } = req.body;
+  let errors = [];
+
+  if (!username || username.length < 3) {
+    errors.push({ field: "username", message: "Username must be at least 3 characters long" });
+  }
+  if (!email || !/\S+@\S+\.\S+/.test(email)) {
+    errors.push({ field: "email", message: "Invalid email address" });
+  }
+  if (!password || password.length < 6) {
+    errors.push({ field: "password", message: "Password must be at least 6 characters long" });
+  }
+
+  if (errors.length > 0) {
+    return res.status(400).json({ errors });
+  }
+
+  res.json({ message: "Form submitted successfully!", data: req.body });
+});
+
+
+
+
+
+Quantum mechanics is a fundamental branch of physics that describes the behavior of particles at very small scales, such as atoms and subatomic particles. It differs significantly from classical physics, as it introduces concepts like wave-particle duality, superposition, and quantum entanglement.
+
+Key Concepts of Quantum Physics:
+
+​Wave-Particle Duality – Particles like electrons and photons exhibit both wave-like and particle-like properties depending on how they are measured.​
+​Superposition – A quantum system can exist in multiple states at once until it is measured.
+Quantum Entanglement – Two or more particles can be linked so that the state of one instantly influences the state of another, regardless of distance.
+Uncertainty Principle – Introduced by Heisenberg, it states that certain pairs of properties, like position and momentum, cannot be precisely known at the same time.
+Quantum Tunneling – Particles can pass through barriers they classically shouldn’t be able to, due to their wave-like nature.
